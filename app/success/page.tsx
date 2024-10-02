@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -15,14 +16,14 @@ export default function SuccessPage() {
             <Check className="w-8 h-8 text-green-500" />
           </div>
           <h1 className="text-2xl font-semibold mt-4">
-            This event is scheduled
+            This event is scheduled🥰
           </h1>
           <p className="text-sm text-muted-foreground text-center mt-1">
             We emailed you and the other attendees a calendar invitation with
             all the details.
           </p>
 
-          {/*     <Separator className="my-5" />
+            <Separator className="my-5" />
 
           <div className="grid grid-cols-3 w-full  self-start gap-y-4">
             <div className="col-span-1">
@@ -44,7 +45,7 @@ export default function SuccessPage() {
             <div className="col-span-2">
               <p className="text-muted-foreground">Online</p>
             </div>
-          </div> */}
+          </div> 
         </CardContent>
         <CardFooter>
           <Button className="w-full" asChild>

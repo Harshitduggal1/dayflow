@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
@@ -22,6 +23,7 @@ import { DasboardLinks } from "../components/dashboard/DasboardLinks";
 import { ThemeToggle } from "../components/dashboard/ThemeToggle";
 import { Toaster } from "@/components/ui/sonner";
 import { auth, signOut } from "../lib/auth";
+import React from "react";
 
 async function getData(id: string) {
   const data = await prisma.user.findUnique({
@@ -63,7 +65,7 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
               <Link href="/" className="flex items-center gap-2 font-semibold">
                 <Image src={Logo} alt="Logo" className="size-6" />
                 <p className="text-xl font-bold">
-                  Cal<span className="text-primary">Marshal</span>
+                  Dayflow<span className="text-primary">.io</span>
                 </p>
               </Link>
             </div>

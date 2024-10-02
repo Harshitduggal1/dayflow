@@ -1,64 +1,154 @@
-import { CloudRain } from "lucide-react";
+"use client"
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { CloudRain, Zap, Shield, Smile,  LifeBuoy } from "lucide-react";
+import AnimationContainer from './animation-container';
 
 const features = [
   {
     name: "Sign up for free",
-    description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
+    description: "Start your journey with us at no cost. Experience the power of seamless scheduling.",
     icon: CloudRain,
+    href: "/signup",
+    color: "from-blue-400 to-cyan-300"
   },
   {
-    name: "Balzing fast",
-    description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
-    icon: CloudRain,
+    name: "Blazing fast",
+    description: "Schedule meetings in seconds. Our lightning-fast interface ensures you're always one step ahead.",
+    icon: Zap,
+    href: "/performance",
+    color: "from-green-600 to-green-300"
   },
   {
-    name: "Super secure with Nylas",
-    description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
-    icon: CloudRain,
+    name: "Ultra secure",
+    description: "Your data is protected with state-of-the-art encryption. Rest easy knowing your information is safe.",
+    icon: Shield,
+    href: "/security",
+    color: "from-orange-500 to-yellow-400"
   },
   {
-    name: "Easy to use",
-    description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.",
-    icon: CloudRain,
+    name: "Delightfully simple",
+    description: "An intuitive interface that anyone can master. Simplify your scheduling process today.",
+    icon: Smile,
+    href: "/ease-of-use",
+    color: "from-purple-400 to-pink-500"
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12
+    }
+  }
+};
+
 export function Features() {
   return (
-    <div className="py-24 ">
-      <div className="max-w-2xl mx-auto lg:text-center">
-        <p className="font-semibold leading-7 text-primary">Schedule faster</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          Schedule meetings in minutes
-        </h1>
-        <p className="mt-6 text-base leading-snug text-muted-foreground">
-          With CalMarshal you can schedule meetings in minutes. We make it easy
-          for you to schedule meetings in minutes. The meetings are very fast
-          and easy to schedule.
-        </p>
-      </div>
-
-      <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+    <motion.div
+      className="py-24 bg-transparent text-white overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <AnimationContainer>
+        <motion.div
+          className="max-w-4xl mx-auto text-center px-4"
+          variants={containerVariants}
+        >
+          <div className="flex items-center justify-center mb-6">
+            <LifeBuoy className="w-4 h-4 mr-2" />
+            <motion.span 
+              className="pointer-events-none whitespace-pre-wrap bg-gradient-to-r from-white to-violet-600 bg-clip-text text-center text-2xl font-bold leading-none text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Revolutionize Your Scheduling
+            </motion.span>
+          </div>
+          <motion.h1
+            className="mt-4 text-5xl font-extrabold tracking-tight pointer-events-none whitespace-pre-wrap bg-gradient-to-r from-indigo-300 via-pink-400 to-purple-500 bg-clip-text text-center leading-none text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Schedule Meetings in Minutes
+          </motion.h1>
+          <motion.p
+            className="mt-6 text-xl pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-white/80 to-gray-300/50  bg-clip-text text-center font-semibold leading-relaxed text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            DAYFLOW.IO empowers you to take control of your time. Experience lightning-fast,
+            secure, and effortless scheduling that adapts to your needs.
+          </motion.p>
+        </motion.div>
+      </AnimationContainer>
+      <motion.div
+        className="mt-20 max-w-6xl mx-auto px-4"
+        variants={containerVariants}
+      >
+        <motion.div
+          className="grid gap-12 lg:grid-cols-2"
+          variants={containerVariants}
+        >
           {features.map((feature) => (
-            <div key={feature.name} className="relative pl-16">
-              <div className="text-base font-semibold leading-7">
-                <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <feature.icon className="w-6 h-6 text-white" />
+            <motion.div
+              key={feature.name}
+              className="relative group"
+              variants={itemVariants}
+            >
+              <AnimationContainer>
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-r ${feature.color} rounded-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 0.75, scale: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  viewport={{ once: true }}
+                />
+                <div className="relative p-8">
+                  <feature.icon className="w-12 h-12 text-white mb-5" />
+                  <h3 className="text-2xl font-bold mb-3">{feature.name}</h3>
+                  <p className="text-gray-100 mb-6">{feature.description}</p>
+                  <Link href={feature.href} passHref>
+                    <motion.a
+                      className="inline-flex items-center px-4 py-2 bg-white text-purple-600 rounded-full font-semibold text-sm transition-colors duration-300 hover:bg-purple-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Learn More
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </motion.a>
+                  </Link>
                 </div>
-                {feature.name}
-              </div>
-              <p className="mt-2 text-sm text-muted-foreground leading-snug">
-                {feature.description}
-              </p>
-            </div>
+              </AnimationContainer>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
+
+export default Features;

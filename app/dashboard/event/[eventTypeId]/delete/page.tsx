@@ -17,7 +17,8 @@ const DeleteEventType = ({ params }: { params: { eventTypeId: string } }) => {
         <CardHeader>
           <CardTitle>Delete Event Type</CardTitle>
           <CardDescription>
-            Are you sure you want to delete this event type?
+         Are you sure you want to delete this event type?⚠️<br/>
+          You could never recover your data then ‼️
           </CardDescription>
         </CardHeader>
         <CardFooter className="w-full flex justify-between">

@@ -38,9 +38,9 @@ const OnboardingPage = () => {
     <div className="h-screen w-screen flex items-center justify-center">
       <Card>
         <CardHeader>
-          <CardTitle>Welcome to CalMarshal</CardTitle>
+          <CardTitle>Welcome to DayFlow.io</CardTitle>
           <CardDescription>
-            We need the following information to set up your profile
+            We need the following information to set up your profile Quickly⚡️
           </CardDescription>
         </CardHeader>
 
@@ -61,7 +61,7 @@ const OnboardingPage = () => {
 
               <div className="flex rounded-md">
                 <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-muted bg-muted text-muted-foreground text-sm">
-                  CalMarshal.com/
+                  DayFlow.io
                 </span>
                 <Input
                   type="text"

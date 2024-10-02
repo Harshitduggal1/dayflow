@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useFormStatus } from "react-dom";
 import GithubLogo from "@/public/github.svg";
 import GoogleLogo from "@/public/google.svg";
+import React from "react";
 interface iAppProps {
   text: string;
   variant?:
@@ -19,7 +20,7 @@ interface iAppProps {
     | null
     | undefined;
 
-  className?: string;
+  className?:string;
 }
 
 export function SubmitButton({ text, variant, className }: iAppProps) {
@@ -50,7 +51,7 @@ export function GitHubAuthButton() {
     <>
       {pending ? (
         <Button variant="outline" className="w-full" disabled>
-          <Loader2 className="size-4 mr-2 animate-spin" /> Please wait
+          <Loader2 className="size-4 mr-2 animate-spin" /> Please wait🥲
         </Button>
       ) : (
         <Button variant="outline" className="w-full">

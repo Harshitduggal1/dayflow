@@ -13,12 +13,26 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
-import { format, fromUnixTime } from "date-fns";
-import { Icon, Video } from "lucide-react";
+import { format } from "date-fns";
+import { Video } from "lucide-react";
 
 import React from "react";
 
-async function getData(userId: string) {
+// Define types for the event data
+interface EventData {
+  id: string;
+  when: {
+    start_time: number;
+    end_time: number;
+  };
+  title: string;
+  participants: Array<{ name: string }>;
+  conferencing: {
+    url: string;
+  };
+}
+
+async function getData(userId: string): Promise<{ data: EventData[] }> {
   const userData = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -39,7 +53,7 @@ async function getData(userId: string) {
     },
   });
 
-  return data;
+  return data as unknown as { data: EventData[] };
 }
 
 const MeetingsPage = async () => {
@@ -70,18 +84,18 @@ const MeetingsPage = async () => {
                 <div className="grid grid-cols-3 justify-between items-center">
                   <div>
                     <p className="text-muted-foreground text-sm">
-                      {format(fromUnixTime(item.when.startTime), "EEE, dd MMM")}
+                      {format(new Date(item.when.start_time * 1000), "EEE, dd MMM")}
                     </p>
                     <p className="text-muted-foreground text-xs pt-1">
-                      {format(fromUnixTime(item.when.startTime), "hh:mm a")} -{" "}
-                      {format(fromUnixTime(item.when.endTime), "hh:mm a")}
+                      {format(new Date(item.when.start_time * 1000), "hh:mm a")} -{" "}
+                      {format(new Date(item.when.end_time * 1000), "hh:mm a")}
                     </p>
                     <div className="flex items-center mt-1">
                       <Video className="size-4 mr-2 text-primary" />{" "}
                       <a
                         className="text-xs text-primary underline underline-offset-4"
                         target="_blank"
-                        href={item.conferencing.details.url}
+                        href={item.conferencing.url}
                       >
                         Join Meeting
                       </a>
@@ -110,36 +124,3 @@ const MeetingsPage = async () => {
 };
 
 export default MeetingsPage;
-
-{
-  /* <form key={item.id} action={cancelMeetingAction}>
-                <input type="hidden" name="eventId" value={item.id} />
-                <div className="grid grid-cols-3 justify-between items-center">
-                  <div>
-                    <p>
-                      {format(fromUnixTime(item.when.startTime), "EEE, dd MMM")}
-                    </p>
-                    <p>
-                      {format(fromUnixTime(item.when.startTime), "hh:mm a")} -{" "}
-                      {format(fromUnixTime(item.when.endTime), "hh:mm a")}
-                    </p>
-                    <div className="flex items-center">
-                      <Video className="size-4 mr-2 text-primary" />{" "}
-                      <a target="_blank" href={item.conferencing.details.url}>
-                        Join Meeting
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <h2>{item.title}</h2>
-                    <p>You and {item.participants[0].name}</p>
-                  </div>
-                  <SubmitButton
-                    text="Cancel Event"
-                    variant="destructive"
-                    className="w-fit flex ml-auto"
-                  />
-                </div>
-                <Separator className="my-3" />
-              </form> */
-}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use server";
 
 import { parseWithZod } from "@conform-to/zod";
@@ -14,7 +15,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { nylas } from "./lib/nylas";
 
-export async function onboardingAction(prevState: any, formData: FormData) {
+export async function onboardingAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = await parseWithZod(formData, {
@@ -90,7 +91,7 @@ export async function onboardingAction(prevState: any, formData: FormData) {
   return redirect("/onboarding/grant-id");
 }
 
-export async function SettingsAction(prevState: any, formData: FormData) {
+export async function SettingsAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = parseWithZod(formData, {
@@ -115,7 +116,7 @@ export async function SettingsAction(prevState: any, formData: FormData) {
 }
 
 export async function CreateEventTypeAction(
-  prevState: any,
+  prevState: unknown,
   formData: FormData
 ) {
   const session = await requireUser();
@@ -153,7 +154,7 @@ export async function CreateEventTypeAction(
   return redirect("/dashboard");
 }
 
-export async function EditEventTypeAction(prevState: any, formData: FormData) {
+export async function EditEventTypeAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = await parseWithZod(formData, {
@@ -207,7 +208,7 @@ export async function DeleteEventTypeAction(formData: FormData) {
 }
 
 export async function updateEventTypeStatusAction(
-  prevState: any,
+  prevState: unknown,
   {
     eventTypeId,
     isChecked,

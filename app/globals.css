@@ -63,7 +63,25 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  body:not(.dark) {
+    @apply text-foreground;
+    background: linear-gradient(
+      90deg,
+      hsl(0, 0%, 100%) 0%,  /* Deep violet */
+      hsl(248, 82%, 85%) 30%,  /* Rich blue-purple */
+      hsl(275, 100%, 86%) 60%,  /* Darker violet-blue */
+      hsl(0, 0%, 100%)
+    );
+  }
+
+  .dark body {
+    background: linear-gradient(
+      90deg,
+      hsl(223, 90%, 28%) 0%,  /* Deep violet */
+      hsl(241, 89%, 21%) 30%,  /* Rich blue-purple */
+      hsl(269, 85%, 26%) 60%,  /* Darker violet-blue */
+      hsl(281, 87%, 15%) 100%
+    );
   }
 }

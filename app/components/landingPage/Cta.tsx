@@ -11,7 +11,7 @@ export function CTA() {
           CalMarshal makes it easy for your clients to scheduale a meeting with
           you clients.
         </h3>
-        <div className="mt-8 flex items-center justify-center gap-x-6">
+        < div className="mt-8 flex items-center justify-center gap-x-6">
           <Button>Get Started Today</Button>
         </div>
         {/* gradient svg */}
