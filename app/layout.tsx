@@ -19,7 +19,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Dayflow.io",
-  description: "Dayflow.io is your next gen AI backed Sheduling software ✨",
+  description: "Dayflow.io is your next gen AI backed Sheduling software ",
 };
 
 export default function RootLayout({
