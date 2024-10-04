@@ -35,14 +35,14 @@ const GrantIdRoute = () => {
               Connect Calender to Account 
             </Link>
           </Button>
-          <div className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-[#fcd2f6] to-[#f92add]  ">
+          <div className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-[#f7a4ff] to-[#f92add]  ">
           something went wrong? <br/>
           Contact us immediately
             
           <Button asChild className="w-full">
             <Link href="/support/contact-us">
               <CalendarCheck2 className="size-4 mr-2" />
-              Contact Us
+              Contact Us  Now⚡️
               
             </Link>
           </Button>
